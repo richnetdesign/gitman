@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Jace Browning">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Git - GitMan</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-6468614-11', 'git-dependency-manager.info');
+            ga('send', 'pageview');
+        </script>
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">GitMan</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Git</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Interfaces <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../interfaces/cli/">Command Line</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../interfaces/plugin/">Git Plugin</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../interfaces/api/">Package API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Use Cases <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../use-cases/submodules/">Replacing Submodules</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../use-cases/branch-tracking/">Tracking Branches</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../use-cases/linked-features/">Linking Feature Branches</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../use-cases/build-integration/">Build System Integration</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../about/changelog/">Release Notes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../about/contributing/">Contributing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../about/license/">License</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../..">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../interfaces/cli/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/jacebrowning/gitman">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#git-setup">Git Setup</a></li>
+        
+            <li><a href="#stored-credentials">Stored Credentials</a></li>
+        
+            <li><a href="#ssh-keys">SSH Keys</a></li>
+        
+            <li><a href="#oauth-tokens">OAuth Tokens</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="git-setup">Git Setup</h1>
+<p>In order for <code>gitman</code> to interact with Git, it must be configured to store your credentials for private repository access.</p>
+<p>To test, trying cloning one of your private repositories:</p>
+<pre><code class="shell">$ git clone https://github.com/&lt;owner&gt;/&lt;repo&gt;.git
+</code></pre>
+
+<p>If you see:</p>
+<pre><code class="shell">Username for 'https://github.com':
+</code></pre>
+
+<p>then credential storage is not set up correctly.</p>
+<h2 id="stored-credentials">Stored Credentials</h2>
+<p>To use the Keychain manager on OS X, run:</p>
+<pre><code>$ git config --global credential.helper osxkeychain
+</code></pre>
+
+<p>To use the Credential Manager on Windows run:</p>
+<pre><code>$ git config --global credential.helper wincred
+</code></pre>
+
+<p>If you're using two-factory authentication on GitHub, you'll need to <a href="http://olivierlacan.com/posts/why-is-git-https-not-working-on-github/">provide a personal access token</a> instead of your password.</p>
+<h2 id="ssh-keys">SSH Keys</h2>
+<p>You can also set up SSH keys (for <a href="https://help.github.com/articles/generating-ssh-keys/">GitHub</a>) and use a different URL:</p>
+<pre><code class="shell">$ git clone git://github.com/&lt;owner&gt;/&lt;repo&gt;.git
+</code></pre>
+
+<h2 id="oauth-tokens">OAuth Tokens</h2>
+<p>Finally, the repository URL itself can contain an OAuth token (for <a href="https://github.com/blog/1270-easier-builds-and-deployments-using-git-over-https-and-oauth">GitHub</a>):</p>
+<pre><code class="shell">$ git clone https://&lt;token&gt;@github.com/&lt;owner&gt;/&lt;repo&gt;.git
+</code></pre>
+
+<p>The token can also be written to <code>.netrc</code> during builds, see the guide for <a href="https://docs.travis-ci.com/user/private-dependencies/#API-Token">Travis CI</a>.</p></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Jace Browning">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Release Notes - GitMan</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-6468614-11', 'git-dependency-manager.info');
+            ga('send', 'pageview');
+        </script>
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">GitMan</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../setup/git/">Git</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Interfaces <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../interfaces/cli/">Command Line</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../interfaces/plugin/">Git Plugin</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../interfaces/api/">Package API</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Use Cases <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../use-cases/submodules/">Replacing Submodules</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../use-cases/branch-tracking/">Tracking Branches</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../use-cases/linked-features/">Linking Feature Branches</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../use-cases/build-integration/">Build System Integration</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Release Notes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../contributing/">Contributing</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../license/">License</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../../use-cases/build-integration/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../contributing/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+                    <li>
+                        <a href="https://github.com/jacebrowning/gitman">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#revision-history">Revision History</a></li>
+        
+            <li><a href="#101-20160531">1.0.1 (2016/05/31)</a></li>
+        
+            <li><a href="#10-20160522">1.0 (2016/05/22)</a></li>
+        
+            <li><a href="#011-20160510">0.11 (2016/05/10)</a></li>
+        
+            <li><a href="#010-20160414">0.10 (2016/04/14)</a></li>
+        
+            <li><a href="#09-20160331">0.9 (2016/03/31)</a></li>
+        
+            <li><a href="#083-20160314">0.8.3 (2016/03/14)</a></li>
+        
+            <li><a href="#082-20160224">0.8.2 (2016/02/24)</a></li>
+        
+            <li><a href="#081-20160121">0.8.1 (2016/01/21)</a></li>
+        
+            <li><a href="#08-20160113">0.8 (2016/01/13)</a></li>
+        
+            <li><a href="#07-20151222">0.7 (2015/12/22)</a></li>
+        
+            <li><a href="#06-20151113">0.6 (2015/11/13)</a></li>
+        
+            <li><a href="#05-20151020">0.5 (2015/10/20)</a></li>
+        
+            <li><a href="#042-20151018">0.4.2 (2015/10/18)</a></li>
+        
+            <li><a href="#041-20150924">0.4.1 (2015/09/24)</a></li>
+        
+            <li><a href="#04-20150918">0.4 (2015/09/18)</a></li>
+        
+            <li><a href="#031-20150909">0.3.1 (2015/09/09)</a></li>
+        
+            <li><a href="#03-20150626">0.3 (2015/06/26)</a></li>
+        
+            <li><a href="#025-20150615">0.2.5 (2015/06/15)</a></li>
+        
+            <li><a href="#024-20150519">0.2.4 (2015/05/19)</a></li>
+        
+            <li><a href="#023-20150517">0.2.3 (2015/05/17)</a></li>
+        
+            <li><a href="#022-20150504">0.2.2 (2015/05/04)</a></li>
+        
+            <li><a href="#021-20150312">0.2.1 (2015/03/12)</a></li>
+        
+            <li><a href="#02-20150310">0.2 (2015/03/10)</a></li>
+        
+            <li><a href="#014-20140227">0.1.4 (2014/02/27)</a></li>
+        
+            <li><a href="#013-20140227">0.1.3 (2014/02/27)</a></li>
+        
+            <li><a href="#012-20140227">0.1.2 (2014/02/27)</a></li>
+        
+            <li><a href="#01-20140224">0.1 (2014/02/24)</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="revision-history">Revision History</h1>
+<h2 id="101-20160531">1.0.1 (2016/05/31)</h2>
+<ul>
+<li>Replaced calls to <code>git remote add origin</code> with <code>git remote set-url origin</code>.</li>
+</ul>
+<h2 id="10-20160522">1.0 (2016/05/22)</h2>
+<ul>
+<li>Initial stable release.</li>
+</ul>
+<h2 id="011-20160510">0.11 (2016/05/10)</h2>
+<ul>
+<li>Removed dependency on <code>sh</code> to support Cygwin/MinGW/etc. on Windows.</li>
+<li>Dropped Python 3.4 support for <code>subprocess</code> and <code>*args</code> improvements.</li>
+<li><strong>BREAKING</strong>: Renamed config file key <code>dir</code> to <code>name</code>.</li>
+</ul>
+<h2 id="010-20160414">0.10 (2016/04/14)</h2>
+<ul>
+<li>Added <code>show</code> command to display dependency and internal paths.</li>
+</ul>
+<h2 id="09-20160331">0.9 (2016/03/31)</h2>
+<ul>
+<li>Added <code>edit</code> command to launch the configuration file.</li>
+<li>Depth now defaults to 5 to prevent infinite recursion.</li>
+<li>Fixed handling of source lists containing different dependencies.</li>
+</ul>
+<h2 id="083-20160314">0.8.3 (2016/03/14)</h2>
+<ul>
+<li>Renamed to GitMan.</li>
+</ul>
+<h2 id="082-20160224">0.8.2 (2016/02/24)</h2>
+<ul>
+<li>Updated to YORM v0.6.</li>
+</ul>
+<h2 id="081-20160121">0.8.1 (2016/01/21)</h2>
+<ul>
+<li>Added an error message when attempting to lock invalid repositories.</li>
+</ul>
+<h2 id="08-20160113">0.8 (2016/01/13)</h2>
+<ul>
+<li>Switched to using repository mirrors to speed up cloning.</li>
+<li>Disabled automatic fetching on install.</li>
+<li>Added <code>--fetch</code> option on <code>install</code> to always fetch.</li>
+<li>Now displaying <code>git status</code> output when there are changes.</li>
+</ul>
+<h2 id="07-20151222">0.7 (2015/12/22)</h2>
+<ul>
+<li>Fixed <code>git remote rm</code> command (@hdnivara).</li>
+<li>Now applying the <code>update</code> dependency filter to locking as well.</li>
+<li>Now only locking previous locked dependencies.</li>
+<li>Added <code>lock</code> command to manually save all dependency versions.</li>
+<li>Now requiring <code>--lock</code> option on <code>update</code> to explicitly lock dependencies.</li>
+</ul>
+<h2 id="06-20151113">0.6 (2015/11/13)</h2>
+<ul>
+<li>Added the ability to filter the dependency list on <code>install</code> and <code>update</code>.</li>
+<li>Added <code>--depth</code> option to limit dependency traversal on <code>install</code>, <code>update</code>, and <code>list</code>.</li>
+</ul>
+<h2 id="05-20151020">0.5 (2015/10/20)</h2>
+<ul>
+<li>Added Git plugin support via: <code>git deps</code>.</li>
+<li>Removed <code>--no-clean</code> option (now the default) on <code>install</code> and <code>update</code>.</li>
+<li>Added <code>--clean</code> option to delete ignored files on <code>install</code> and <code>update</code>.</li>
+<li>Switched to <code>install</code> rather than <code>update</code> of nested dependencies.</li>
+<li>Added <code>--all</code> option on <code>update</code> to update all nested dependencies.</li>
+<li>Disabled warnings when running <code>install</code> without locked sources.</li>
+<li>Added <code>--no-lock</code> option to disable version recording.</li>
+</ul>
+<h2 id="042-20151018">0.4.2 (2015/10/18)</h2>
+<ul>
+<li>Fixed crash when running with some sources missing.</li>
+</ul>
+<h2 id="041-20150924">0.4.1 (2015/09/24)</h2>
+<ul>
+<li>Switched to cloning for initial working tree creation.</li>
+</ul>
+<h2 id="04-20150918">0.4 (2015/09/18)</h2>
+<ul>
+<li>Replaced <code>install</code> command with <code>update</code>.</li>
+<li>Updated <code>install</code> command to use locked dependency versions.</li>
+<li>Now sorting sources after a successful <code>update</code>.</li>
+<li>Now requiring <code>--force</code> to <code>uninstall</code> with uncommitted changes.</li>
+<li>Updated <code>list</code> command to show full shell commands.</li>
+</ul>
+<h2 id="031-20150909">0.3.1 (2015/09/09)</h2>
+<ul>
+<li>Ensures files are not needlessly reloaded with newer versions of YORM.</li>
+</ul>
+<h2 id="03-20150626">0.3 (2015/06/26)</h2>
+<ul>
+<li>Added <code>--no-clean</code> option to disable removing untracked files.</li>
+<li>Added support for <code>rev-parse</code> dates as the dependency <code>rev</code>.</li>
+</ul>
+<h2 id="025-20150615">0.2.5 (2015/06/15)</h2>
+<ul>
+<li>Added <code>--quiet</code> option to hide warnings.</li>
+</ul>
+<h2 id="024-20150519">0.2.4 (2015/05/19)</h2>
+<ul>
+<li>Now hiding YORM logging bellow warnings.</li>
+</ul>
+<h2 id="023-20150517">0.2.3 (2015/05/17)</h2>
+<ul>
+<li>Upgraded to YORM v0.4.</li>
+</ul>
+<h2 id="022-20150504">0.2.2 (2015/05/04)</h2>
+<ul>
+<li>Specified YORM &lt; v0.4.</li>
+</ul>
+<h2 id="021-20150312">0.2.1 (2015/03/12)</h2>
+<ul>
+<li>Added automatic remote branch tracking in dependencies.</li>
+<li>Now requiring <code>--force</code> when there are untracked files.</li>
+</ul>
+<h2 id="02-20150310">0.2 (2015/03/10)</h2>
+<ul>
+<li>Added <code>list</code> command to display current URLs/SHAs.</li>
+</ul>
+<h2 id="014-20140227">0.1.4 (2014/02/27)</h2>
+<ul>
+<li>Fixed an outdated index when checking for changes.</li>
+</ul>
+<h2 id="013-20140227">0.1.3 (2014/02/27)</h2>
+<ul>
+<li>Fixed extra whitespace when logging shell output.</li>
+</ul>
+<h2 id="012-20140227">0.1.2 (2014/02/27)</h2>
+<ul>
+<li>Added <code>--force</code> argument to:<ul>
+<li>overwrite uncommitted changes</li>
+<li>create symbolic links in place of directories</li>
+</ul>
+</li>
+<li>Added live shell command output with <code>-vv</code> argument.</li>
+</ul>
+<h2 id="01-20140224">0.1 (2014/02/24)</h2>
+<ul>
+<li>Initial release.</li>
+</ul></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

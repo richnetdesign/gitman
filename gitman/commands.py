@@ -124,7 +124,7 @@ def display(*, root=None, depth=None, allow_dirty=True):
 
 
 @restore_cwd
-def lock(*names, root=None):
+def lock(*names, rev=None, root=None):
     """Lock current dependency versions for a project.
 
     Optional arguments:

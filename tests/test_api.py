@@ -329,6 +329,17 @@ def describe_lock():
           rev: 9bf18e16b956041f0267c21baad555a23237b52e
         """) == config.__mapper__.text
 
+    def it_supports_a_rev_override(config):
+        expect(gitman.lock('gitman_1', rev='master')) == True
+
+        expect(config.__mapper__.text) == CONFIG + strip("""
+        sources_locked:
+        - name: gitman_1
+          link: ''
+          repo: https://github.com/jacebrowning/gitman-demo
+          rev: master
+        """) == config.__mapper__.text
+
     def it_should_fail_on_invalid_repositories(config):
         os.system("mkdir deps && touch deps/gitman_1")
 

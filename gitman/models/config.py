@@ -58,9 +58,9 @@ class Config:
         else:
             return base
 
-    def install_deps(self, *names, depth=None,
-                     update=True, recurse=False,
-                     force=False, fetch=False, clean=True):
+    def install_sources(self, *names, depth=None,
+                        update=True, recurse=False,
+                        force=False, fetch=False, clean=True):
         """Get all sources."""
         if depth == 0:
             log.info("Skipped directory: %s", self.location_path)
@@ -92,7 +92,7 @@ class Config:
             config = load_config()
             if config:
                 common.indent()
-                count += config.install_deps(
+                count += config.install_sources(
                     depth=None if depth is None else max(0, depth - 1),
                     update=update and recurse,
                     recurse=recurse,
@@ -111,7 +111,7 @@ class Config:
 
         return count
 
-    def lock_deps(self, *names, obey_existing=True):
+    def lock_sources(self, *names, obey_existing=True):
         """Lock down the immediate dependency versions."""
         shell.cd(self.location_path)
         common.show()
@@ -143,12 +143,12 @@ class Config:
 
         return count
 
-    def uninstall_deps(self):
+    def uninstall_sources(self):
         """Remove the sources location."""
         shell.rm(self.location_path)
         common.show()
 
-    def get_deps(self, depth=None, allow_dirty=True):
+    def get_sources(self, depth=None, allow_dirty=True):
         """Yield the path, repository URL, and hash of each dependency."""
         if not os.path.exists(self.location_path):
             return
@@ -169,7 +169,7 @@ class Config:
             config = load_config()
             if config:
                 common.indent()
-                yield from config.get_deps(
+                yield from config.get_sources(
                     depth=None if depth is None else max(0, depth - 1),
                     allow_dirty=allow_dirty,
                 )

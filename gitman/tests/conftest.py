@@ -4,7 +4,8 @@ import logging
 import os
 
 import pytest
-import yorm
+
+import datafiles
 
 
 ENV = 'TEST_INTEGRATION'  # environment variable to enable integration tests
@@ -20,7 +21,7 @@ def pytest_configure(config):
         level=logging.DEBUG,
         format="[%(levelname)-8s] (%(name)s @%(lineno)4d) %(message)s",
     )
-    logging.getLogger('yorm').setLevel(logging.WARNING)
+    logging.getLogger('datafiles').setLevel(logging.WARNING)
 
     terminal = config.pluginmanager.getplugin('terminal')
 
@@ -35,11 +36,11 @@ def pytest_configure(config):
 
 
 def pytest_runtest_setup(item):
-    """Disable YORM file storage during unit tests."""
+    """Disable file storage during unit tests."""
     if 'integration' in item.keywords:
         if not os.getenv(ENV):
             pytest.skip(REASON)
         else:
-            yorm.settings.fake = False
+            datafiles.settings.HOOKS_ENABLED = True
     else:
-        yorm.settings.fake = True
+        datafiles.settings.HOOKS_ENABLED = False

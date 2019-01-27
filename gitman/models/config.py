@@ -2,8 +2,7 @@ import logging
 import os
 from typing import List
 
-import yorm
-from yorm.types import SortedList, String
+from datafiles import datafile, field
 
 from .. import common, exceptions, shell
 from .group import Group
@@ -13,24 +12,23 @@ from .source import Source
 log = logging.getLogger(__name__)
 
 
-@yorm.attr(location=String)
-@yorm.attr(sources=SortedList.of_type(Source))
-@yorm.attr(sources_locked=SortedList.of_type(Source))
-@yorm.attr(groups=SortedList.of_type(Group))
-@yorm.sync("{self.root}/{self.filename}", auto_save=False)
-class Config(yorm.ModelMixin):
+@datafile("{self.root}/{self.filename}", manual=True)
+class Config:
     """Specifies all dependencies for a project."""
+
+    root: str = None
+    filename: str = "gitman.yml"
+
+    location: str = "gitman_sources"
+    sources: List[Source] = field(default_factory=list)
+    sources_locked: List[Source] = field(default_factory=list)
+    groups: List[Group] = field(default_factory=list)
 
     LOG = "gitman.log"
 
-    def __init__(self, root=None, filename="gitman.yml", location="gitman_sources"):
-        super().__init__()
-        self.root = root or os.getcwd()
-        self.filename = filename
-        self.location = location
-        self.sources: List[Source] = []
-        self.sources_locked: List[Source] = []
-        self.groups: List[Group] = []
+    def __post_init__(self):
+        if self.root is None:
+            self.root = os.getcwd()
 
     def _on_post_load(self):
         for source in self.sources:
@@ -207,7 +205,7 @@ class Config(yorm.ModelMixin):
             shell.cd(self.location_path, _show=False)
 
         if count:
-            self.save()
+            self.datafile.save()
 
         common.dedent()
 

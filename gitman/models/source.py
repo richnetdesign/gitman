@@ -1,8 +1,7 @@
 import logging
 import os
-
-import yorm
-from yorm.types import AttributeDictionary, List, NullableString, String
+from dataclasses import dataclass, field
+from typing import List, Optional
 
 from .. import common, exceptions, git, shell
 
@@ -10,45 +9,33 @@ from .. import common, exceptions, git, shell
 log = logging.getLogger(__name__)
 
 
-@yorm.attr(name=String)
-@yorm.attr(type=String)
-@yorm.attr(repo=String)
-@yorm.attr(sparse_paths=List.of_type(String))
-@yorm.attr(rev=String)
-@yorm.attr(link=NullableString)
-@yorm.attr(scripts=List.of_type(String))
-class Source(AttributeDictionary):
+@dataclass
+class Source:
     """A dictionary of `git` and `ln` arguments."""
+
+    name: str
+    type: str
+    repo: str
+    sparse_paths: List[str] = field(default_factory=list)
+    rev: str = 'master'
+    link: Optional[str] = None
+    scripts: List[str] = field(default_factory=list)
 
     DIRTY = '<dirty>'
     UNKNOWN = '<unknown>'
 
-    def __init__(
-        self,
-        type,
-        repo,
-        name=None,
-        rev='master',
-        link=None,
-        scripts=None,
-        sparse_paths=None,
-    ):
+    def __post_init__(self):
+        if self.name is None:
+            self.name = self._infer_name(self.repo)
 
-        super().__init__()
-        self.type = type or 'git'
-        self.repo = repo
-        self.name = self._infer_name(repo) if name is None else name
-        self.rev = rev
-        self.link = link
-        self.scripts = scripts or []
-        self.sparse_paths = sparse_paths or []
-
-        for key in ['name', 'repo', 'rev']:
-            if not self[key]:
-                msg = "'{}' required for {}".format(key, repr(self))
+        # TODO: Remove this?
+        for name in ['name', 'repo', 'rev']:
+            if not getattr(self, name):
+                msg = "'{}' required for {}".format(name, repr(self))
                 raise exceptions.InvalidConfig(msg)
 
     def _on_post_load(self):
+        # TODO: Remove this?
         self.type = self.type or 'git'
 
     def __repr__(self):
@@ -260,13 +247,13 @@ class Source(AttributeDictionary):
             return None
 
         source = self.__class__(
-            self.type,
-            self.repo,
-            self.name,
-            rev,
-            self.link,
-            self.scripts,
-            self.sparse_paths,
+            type=self.type,
+            repo=self.repo,
+            name=self.name,
+            rev=rev,
+            link=self.link,
+            scripts=self.scripts,
+            sparse_paths=self.sparse_paths,
         )
         return source
 
@@ -274,7 +261,7 @@ class Source(AttributeDictionary):
     def _invalid_repository(self):
         path = os.path.join(os.getcwd(), self.name)
         msg = """
-            
+
             Not a valid repository: {}
             During install you can rebuild a repo with a missing .git directory using the --force option
             """.format(

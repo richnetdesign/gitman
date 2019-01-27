@@ -86,7 +86,9 @@ def configure_logging(count=0):
         default_format, verbose_format, datefmt=settings.LOGGING_DATEFMT
     )
     logging.root.handlers[0].setFormatter(formatter)
-    logging.getLogger('yorm').setLevel(max(level, settings.YORM_LOGGING_LEVEL))
+    logging.getLogger('datafiles').setLevel(
+        max(level, settings.DATAFILES_LOGGING_LEVEL)
+    )
 
     # Warn about excessive verbosity
     if count > _Config.MAX_VERBOSITY:

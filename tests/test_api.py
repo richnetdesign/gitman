@@ -106,7 +106,8 @@ def describe_init():
           link:
           scripts:
           -
-        groups: []
+        groups:
+          -
         """
         )
 

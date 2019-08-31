@@ -5,7 +5,12 @@ import logging
 import os
 import sys
 
+import datafiles
+
 from . import settings
+
+
+datafiles.settings.INDENT_YAML_BLOCKS = False
 
 
 _log = logging.getLogger(__name__)

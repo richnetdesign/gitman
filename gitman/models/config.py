@@ -1,6 +1,6 @@
 import logging
 import os
-from typing import List
+from typing import List, Optional
 
 from datafiles import datafile, field
 
@@ -16,7 +16,7 @@ log = logging.getLogger(__name__)
 class Config:
     """Specifies all dependencies for a project."""
 
-    root: str = None
+    root: Optional[str] = None
     filename: str = "gitman.yml"
 
     location: str = "gitman_sources"

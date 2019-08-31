@@ -13,13 +13,13 @@ log = logging.getLogger(__name__)
 class Source:
     """A dictionary of `git` and `ln` arguments."""
 
-    name: str
+    name: Optional[str]
     type: str
     repo: str
-    sparse_paths: List[str] = field(default_factory=list)
+    sparse_paths: List[Optional[str]] = field(default_factory=list)
     rev: str = 'master'
     link: Optional[str] = None
-    scripts: List[str] = field(default_factory=list)
+    scripts: List[Optional[str]] = field(default_factory=list)
 
     DIRTY = '<dirty>'
     UNKNOWN = '<unknown>'

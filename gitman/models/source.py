@@ -1,12 +1,10 @@
-import logging
 import os
 from dataclasses import dataclass, field
 from typing import List, Optional
 
+import log
+
 from .. import common, exceptions, git, shell
-
-
-log = logging.getLogger(__name__)
 
 
 @dataclass

@@ -1,15 +1,13 @@
-import logging
 import os
 from typing import List, Optional
+
+import log
 
 from datafiles import datafile, field
 
 from .. import common, exceptions, shell
 from .group import Group
 from .source import Source
-
-
-log = logging.getLogger(__name__)
 
 
 @datafile("{self.root}/{self.filename}", manual=True)

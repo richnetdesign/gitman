@@ -1,9 +1,10 @@
 """Common exceptions, classes, and functions."""
 
 import argparse
-import logging
 import os
 import sys
+
+import log
 
 import datafiles
 
@@ -11,9 +12,6 @@ from . import settings
 
 
 datafiles.settings.INDENT_YAML_BLOCKS = False
-
-
-_log = logging.getLogger(__name__)
 
 
 class WideHelpFormatter(argparse.HelpFormatter):
@@ -24,7 +22,7 @@ class WideHelpFormatter(argparse.HelpFormatter):
         super().__init__(*args, **kwargs)
 
 
-class WarningFormatter(logging.Formatter):
+class WarningFormatter(log.logging.Formatter):
     """Logging formatter that displays verbose formatting for WARNING+."""
 
     def __init__(self, default_format, verbose_format, *args, **kwargs):
@@ -34,7 +32,7 @@ class WarningFormatter(logging.Formatter):
 
     def format(self, record):
         # pylint: disable=protected-access
-        if record.levelno > logging.INFO:
+        if record.levelno > log.INFO:
             self._style._fmt = self.verbose_format
         else:
             self._style._fmt = self.default_format
@@ -85,20 +83,18 @@ def configure_logging(count=0):
         verbose_format = settings.VERBOSE2_LOGGING_FORMAT
 
     # Set a custom formatter
-    logging.basicConfig(level=level)
-    logging.captureWarnings(True)
+    log.init(level=level, reset=True)
+    log.silence('datafiles', allow_warning=True)
+    log.logging.captureWarnings(True)
     formatter = WarningFormatter(
         default_format, verbose_format, datefmt=settings.LOGGING_DATEFMT
     )
-    logging.root.handlers[0].setFormatter(formatter)
-    logging.getLogger('datafiles').setLevel(
-        max(level, settings.DATAFILES_LOGGING_LEVEL)
-    )
+    log.logging.root.handlers[0].setFormatter(formatter)
 
     # Warn about excessive verbosity
     if count > _Config.MAX_VERBOSITY:
         msg = "Maximum verbosity level is {}".format(_Config.MAX_VERBOSITY)
-        logging.warning(msg)
+        log.warning(msg)
         _Config.verbosity = _Config.MAX_VERBOSITY
     else:
         _Config.verbosity = count
@@ -122,7 +118,12 @@ def newline():
     show("")
 
 
-def show(*messages, file=sys.stdout, log=_log, **kwargs):
+def show(
+    *messages,
+    file=sys.stdout,
+    log=log,  # pylint: disable=redefined-outer-name
+    **kwargs,
+):
     """Write to standard output or error if enabled."""
     if any(messages):
         assert 'color' in kwargs, "Color is required"

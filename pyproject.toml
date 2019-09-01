@@ -42,6 +42,7 @@ classifiers = [
 python = "^3.7"
 
 datafiles = "^0.5b2"
+minilog = "^1.2"
 
 [tool.poetry.dev-dependencies]
 
@@ -55,7 +56,7 @@ pydocstyle = "*"
 pylint = "^2.0"
 
 # Testing
-pytest = "^4.2.0"
+pytest = "^5.1.2"
 pytest-cov = "*"
 pytest-describe = "*"
 pytest-expecter = "*"

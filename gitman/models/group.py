@@ -1,11 +1,7 @@
-import logging
 from dataclasses import dataclass
 from typing import List
 
 from .. import exceptions
-
-
-log = logging.getLogger(__name__)
 
 
 @dataclass

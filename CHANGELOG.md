@@ -1,3 +1,7 @@
+# 2.0 (unreleased)
+
+- TBD
+
 # 1.7 (2019-08-07)
 
 - **BREAKING**: Renamed `-f` alias to `-F` (`-f` now implies `--force-interactive`).

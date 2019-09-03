@@ -166,7 +166,7 @@ class Source:
             raise self._invalid_repository
 
         # Check for scripts
-        if not self.scripts:
+        if not self.scripts or not self.scripts[0]:
             common.show("(no scripts to run)", color='shell_info')
             common.newline()
             return
